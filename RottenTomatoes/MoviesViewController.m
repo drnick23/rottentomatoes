@@ -97,10 +97,11 @@
     
     __weak MoviesCell *weakCell = cell;
     
-    [cell.imageView setImageWithURLRequest:request
+    [cell.thumbImageView setImageWithURLRequest:request
      placeholderImage:placeholderImage
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-         weakCell.imageView.image = image;
+         weakCell.thumbImageView.image = image;
+         //imageView.image = image;
          //[weakCell setNeedsLayout];
      }
      failure:nil];
