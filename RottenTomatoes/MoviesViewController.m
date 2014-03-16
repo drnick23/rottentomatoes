@@ -65,7 +65,7 @@
         if([object isKindOfClass:[NSDictionary class]])
         {
             NSDictionary *results = object;
-            NSLog(@"%@",[results objectForKey:@"movies"]);
+            //NSLog(@"%@",[results objectForKey:@"movies"]);
             
            /* if([[results objectForKey:@"movies"] isKindOfClass:[NSArray class]]) {
                 self.movies = [results objectForKey:@"movies"];

@@ -29,7 +29,7 @@
     } else {
         [self.movies addObject:movie];
     }
-    NSLog(@"added movie to list %@",movie);
+    //NSLog(@"added movie to list %@",movie);
 }
 
 - (Movie *) get:(NSUInteger) index
