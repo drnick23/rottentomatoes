@@ -63,6 +63,12 @@
 		013488FC18D2BDCA00755D1A /* UIRefreshControl+AFNetworking.m in Resources */ = {isa = PBXBuildFile; fileRef = 013488D218D2BDCA00755D1A /* UIRefreshControl+AFNetworking.m */; };
 		013488FD18D2BDCA00755D1A /* UIWebView+AFNetworking.h in Resources */ = {isa = PBXBuildFile; fileRef = 013488D318D2BDCA00755D1A /* UIWebView+AFNetworking.h */; };
 		013488FE18D2BDCA00755D1A /* UIWebView+AFNetworking.m in Resources */ = {isa = PBXBuildFile; fileRef = 013488D418D2BDCA00755D1A /* UIWebView+AFNetworking.m */; };
+		0134893A18D5E8A500755D1A /* MBProgressHUD.h in Resources */ = {isa = PBXBuildFile; fileRef = 0134893218D5E8A500755D1A /* MBProgressHUD.h */; };
+		0134893B18D5E8A500755D1A /* MBProgressHUD.m in Resources */ = {isa = PBXBuildFile; fileRef = 0134893318D5E8A500755D1A /* MBProgressHUD.m */; };
+		0134893C18D5E8A500755D1A /* Pods-MBProgressHUD.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0134893418D5E8A500755D1A /* Pods-MBProgressHUD.xcconfig */; };
+		0134893D18D5E8A500755D1A /* Pods-MBProgressHUD-Private.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0134893518D5E8A500755D1A /* Pods-MBProgressHUD-Private.xcconfig */; };
+		0134893E18D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m in Resources */ = {isa = PBXBuildFile; fileRef = 0134893618D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m */; };
+		0134893F18D5E8A500755D1A /* Pods-MBProgressHUD-prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 0134893718D5E8A500755D1A /* Pods-MBProgressHUD-prefix.pch */; };
 		01624DDB18D4E7BC000953D0 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01624DD918D4E7BC000953D0 /* MovieDetailViewController.m */; };
 		01624DDC18D4E7BC000953D0 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01624DDA18D4E7BC000953D0 /* MovieDetailViewController.xib */; };
 		01624DDF18D4EE82000953D0 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 01624DDE18D4EE82000953D0 /* Movie.m */; };
@@ -143,6 +149,12 @@
 		013488D218D2BDCA00755D1A /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		013488D318D2BDCA00755D1A /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		013488D418D2BDCA00755D1A /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		0134893218D5E8A500755D1A /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		0134893318D5E8A500755D1A /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		0134893418D5E8A500755D1A /* Pods-MBProgressHUD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-MBProgressHUD.xcconfig"; sourceTree = "<group>"; };
+		0134893518D5E8A500755D1A /* Pods-MBProgressHUD-Private.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-MBProgressHUD-Private.xcconfig"; sourceTree = "<group>"; };
+		0134893618D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		0134893718D5E8A500755D1A /* Pods-MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		01624DD818D4E7BC000953D0 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
 		01624DD918D4E7BC000953D0 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		01624DDA18D4E7BC000953D0 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
@@ -202,6 +214,7 @@
 		0134886D18D2AA4C00755D1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0134893918D5E8A500755D1A /* MBProgressHUD */,
 				013488D618D2BDCA00755D1A /* AFNetworking */,
 				0134886E18D2AA4C00755D1A /* Foundation.framework */,
 				0134887018D2AA4C00755D1A /* CoreGraphics.framework */,
@@ -394,6 +407,29 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		0134893818D5E8A500755D1A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0134893418D5E8A500755D1A /* Pods-MBProgressHUD.xcconfig */,
+				0134893518D5E8A500755D1A /* Pods-MBProgressHUD-Private.xcconfig */,
+				0134893618D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m */,
+				0134893718D5E8A500755D1A /* Pods-MBProgressHUD-prefix.pch */,
+			);
+			name = "Support Files";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		0134893918D5E8A500755D1A /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				0134893218D5E8A500755D1A /* MBProgressHUD.h */,
+				0134893318D5E8A500755D1A /* MBProgressHUD.m */,
+				0134893818D5E8A500755D1A /* Support Files */,
+			);
+			name = MBProgressHUD;
+			path = Pods/MBProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -478,16 +514,19 @@
 				013488F118D2BDCA00755D1A /* UIActivityIndicatorView+AFNetworking.m in Resources */,
 				013488FB18D2BDCA00755D1A /* UIRefreshControl+AFNetworking.h in Resources */,
 				013488E618D2BDCA00755D1A /* AFURLRequestSerialization.h in Resources */,
+				0134893B18D5E8A500755D1A /* MBProgressHUD.m in Resources */,
 				013488EA18D2BDCA00755D1A /* Pods-AFNetworking.xcconfig in Resources */,
 				013488E018D2BDCA00755D1A /* AFURLSessionManager.h in Resources */,
 				013488FC18D2BDCA00755D1A /* UIRefreshControl+AFNetworking.m in Resources */,
 				013488DD18D2BDCA00755D1A /* AFURLConnectionOperation.m in Resources */,
 				0134887918D2AA4C00755D1A /* InfoPlist.strings in Resources */,
+				0134893D18D5E8A500755D1A /* Pods-MBProgressHUD-Private.xcconfig in Resources */,
 				013488EC18D2BDCA00755D1A /* Pods-AFNetworking-dummy.m in Resources */,
 				013488DE18D2BDCA00755D1A /* AFHTTPSessionManager.h in Resources */,
 				013488DA18D2BDCA00755D1A /* AFHTTPRequestOperationManager.h in Resources */,
 				013488F718D2BDCA00755D1A /* UIImageView+AFNetworking.m in Resources */,
 				013488A118D2AA7300755D1A /* MoviesViewController.xib in Resources */,
+				0134893C18D5E8A500755D1A /* Pods-MBProgressHUD.xcconfig in Resources */,
 				013488FE18D2BDCA00755D1A /* UIWebView+AFNetworking.m in Resources */,
 				013488F018D2BDCA00755D1A /* UIActivityIndicatorView+AFNetworking.h in Resources */,
 				013488ED18D2BDCA00755D1A /* Pods-AFNetworking-prefix.pch in Resources */,
@@ -503,13 +542,16 @@
 				013488E718D2BDCA00755D1A /* AFURLRequestSerialization.m in Resources */,
 				0134888118D2AA4C00755D1A /* Images.xcassets in Resources */,
 				013488D718D2BDCA00755D1A /* AFNetworking.h in Resources */,
+				0134893A18D5E8A500755D1A /* MBProgressHUD.h in Resources */,
 				013488F818D2BDCA00755D1A /* UIKit+AFNetworking.h in Resources */,
 				013488E318D2BDCA00755D1A /* AFNetworkReachabilityManager.m in Resources */,
 				013488D818D2BDCA00755D1A /* AFHTTPRequestOperation.h in Resources */,
 				013488E818D2BDCA00755D1A /* AFURLResponseSerialization.h in Resources */,
+				0134893E18D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m in Resources */,
 				013488D918D2BDCA00755D1A /* AFHTTPRequestOperation.m in Resources */,
 				013488DB18D2BDCA00755D1A /* AFHTTPRequestOperationManager.m in Resources */,
 				013488EE18D2BDCA00755D1A /* AFNetworkActivityIndicatorManager.h in Resources */,
+				0134893F18D5E8A500755D1A /* Pods-MBProgressHUD-prefix.pch in Resources */,
 				013488F218D2BDCA00755D1A /* UIAlertView+AFNetworking.h in Resources */,
 				013488DC18D2BDCA00755D1A /* AFURLConnectionOperation.h in Resources */,
 				013488DF18D2BDCA00755D1A /* AFHTTPSessionManager.m in Resources */,
