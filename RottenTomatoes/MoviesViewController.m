@@ -7,14 +7,16 @@
 //
 
 #import "MoviesViewController.h"
+#import "MovieDetailViewController.h"
 #import "MoviesCell.h"
+#import "MovieList.h"
 #import "UIImageView+AFNetworking.h"
 
 
 @interface MoviesViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong) NSArray *movies;
+@property (nonatomic,strong) MovieList *movieList;
 
 @end
 
@@ -45,7 +47,9 @@
     // load data from RottenTomatoes
     //http://api.rottentomatoes.com/api/public/v1.0/lists/movies.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t
     
+    self.movieList = [[MovieList alloc] init];
     [self fetchMovies];
+    
     
 }
 
@@ -63,9 +67,24 @@
             NSDictionary *results = object;
             NSLog(@"%@",[results objectForKey:@"movies"]);
             
-            if([[results objectForKey:@"movies"] isKindOfClass:[NSArray class]]) {
+           /* if([[results objectForKey:@"movies"] isKindOfClass:[NSArray class]]) {
                 self.movies = [results objectForKey:@"movies"];
+            }*/
+            
+            if([[results objectForKey:@"movies"] isKindOfClass:[NSArray class]]) {
+                
+                NSDictionary *movieRawData = [results objectForKey:@"movies"];
+                
+                // add all our movies to the list...
+                for (NSDictionary *dictionary in movieRawData) {
+                    Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+                    [self.movieList add:movie atTop:NO];
+                    NSLog(@"Added movie %@",movie.title);
+                }
+                
             }
+            
+            
             [self.tableView reloadData];
         }
         else
@@ -78,36 +97,27 @@
 }
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
+    return [self.movieList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MoviesCell";
     MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    Movie *movie = [self.movieList get:indexPath.row];
     
-    cell.titleLabel.text = [NSString stringWithFormat:@"%@", self.movies[indexPath.row][@"title"]];
-    NSLog(@"Row movie %d %@",indexPath.row,self.movies[indexPath.row][@"title"]);
+    cell.titleLabel.text = movie.title;//[NSString stringWithFormat:@"%@", self.movies[indexPath.row][@"title"]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+    NSLog(@"Movie object %@",movie.title);
     
-    cell.descriptionLabel.text = [NSString stringWithFormat:@"%@", self.movies[indexPath.row][@"synopsis"]];
+    cell.descriptionLabel.text = movie.summary;//[NSString stringWithFormat:@"%@", self.movies[indexPath.row][@"synopsis"]];
     
-    NSURL *imageUrl = [NSURL URLWithString:self.movies[indexPath.row][@"posters"][@"thumbnail"]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:imageUrl];
+    NSURL *imageUrl = [NSURL URLWithString:movie.thumbUrl];
     UIImage *placeholderImage = [UIImage imageNamed:@"MoviePlaceholder"];
+    [cell.thumbImageView setImageWithURL:imageUrl placeholderImage:placeholderImage];
+
     
-    __weak MoviesCell *weakCell = cell;
-    
-    [cell.thumbImageView setImageWithURLRequest:request
-     placeholderImage:placeholderImage
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-         weakCell.thumbImageView.image = image;
-         //imageView.image = image;
-         //[weakCell setNeedsLayout];
-     }
-     failure:nil];
-    
-   
-        
     return cell;
 }
 
@@ -115,15 +125,13 @@
 {
     
     // Display Alert Message
-    MoviesCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    MoviesCell *cell = (MoviesCell *) [tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"You selected %@",cell.titleLabel.text);
     
+    MovieDetailViewController *mdvc = [[MovieDetailViewController alloc] init];
+    mdvc.movie = [self.movieList get:indexPath.row];
+    [self.navigationController pushViewController:mdvc animated:YES];
     
-    //int idx=indexPath.row;
-    /*
-    MovieDetailViewController *mdvc = [[]
-	mdvc.dataItem =[dataItems objectAtIndex:idx];
-	[self.view addSubview:[[B]myExistingController[/B].view]];*/
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
