@@ -33,16 +33,20 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSLog(@"Nib initialized");
     }
     return self;
+}
+
+- (void)setApiCall:(NSString *)apiURL
+{
+    self.apiURL = apiURL;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    self.navigationItem.title = @"Movies";
     
     // configure datasource and delegate of the table view
     self.tableView.delegate = self;
@@ -52,6 +56,7 @@
     UINib *customNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"MoviesCell"];
     
+    //self.apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
     
     // hide network unreachable view by default
     [self.networkErrorView setHidden:YES];
@@ -71,10 +76,6 @@
     // Configure View Controller
     //self.refreshControl = refreshControl;
     [self.tableView addSubview:refreshControl];
-    
-    // load data from RottenTomatoes
-    //http://api.rottentomatoes.com/api/public/v1.0/lists/movies.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t
-    
     
     // Allocate a reachability object
     Reachability* reach = [Reachability reachabilityWithHostname:@"api.rottentomatoes.com"];
@@ -121,8 +122,9 @@
     // show progress indicator when fetching movies
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    //NSURL *rottenTomatoesMoviesListURL = [[NSURL alloc] initWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t"];
-    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
+    NSString *url = self.apiURL;
+    //@"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
+
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {

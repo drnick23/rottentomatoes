@@ -16,13 +16,41 @@
     
     // setup initial views
     MoviesViewController *mvc = [[MoviesViewController alloc] init];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mvc];
-    self.window.rootViewController = nc;
+    mvc.apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
+    mvc.navigationItem.title = @"Movies";
+   
+    MoviesViewController *bvc = [[MoviesViewController alloc] init];
+    bvc.apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
+    bvc.navigationItem.title = @"Box Office";
+    
+    MoviesViewController *dvc = [[MoviesViewController alloc] init];
+    dvc.apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/current_releases.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
+    dvc.navigationItem.title = @"Current DVDs";
+    
+    UINavigationController *firstnc = [[UINavigationController alloc] initWithRootViewController:mvc];
+    firstnc.tabBarItem.title = @"Movies";
+    
+    UINavigationController *secondnc = [[UINavigationController alloc] initWithRootViewController:bvc];
+    secondnc.tabBarItem.title = @"Box Office";
+    
+    UINavigationController *thirdnc = [[UINavigationController alloc] initWithRootViewController:dvc];
+    thirdnc.tabBarItem.title = @"DVDs";
+    
+    UITabBarController *tbc = [[UITabBarController alloc] init];
+    tbc.viewControllers = @[firstnc,secondnc,thirdnc];
     
     
-    UINavigationBar *nb = nc.navigationBar;
+    
+    self.window.rootViewController = tbc;
+    
+    
+    
+    
+    // placeholder code for customizing navigation bar
+    UINavigationBar *nb = firstnc.navigationBar;
     UIImage *image = [UIImage imageNamed:@"MoviePlaceholder.png"];
     [nb setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
