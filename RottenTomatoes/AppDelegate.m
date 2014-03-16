@@ -19,6 +19,10 @@
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mvc];
     self.window.rootViewController = nc;
     
+    
+    UINavigationBar *nb = nc.navigationBar;
+    UIImage *image = [UIImage imageNamed:@"MoviePlaceholder.png"];
+    [nb setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
