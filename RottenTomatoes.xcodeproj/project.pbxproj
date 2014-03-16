@@ -479,6 +479,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Nicolas Halper";
 				TargetAttributes = {
+					0134886A18D2AA4C00755D1A = {
+						DevelopmentTeam = BXP4NFFX5D;
+					};
 					0134888518D2AA4C00755D1A = {
 						TestTargetID = 0134886A18D2AA4C00755D1A;
 					};
@@ -735,10 +738,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RottenTomatoes/RottenTomatoes-Prefix.pch";
 				INFOPLIST_FILE = "RottenTomatoes/RottenTomatoes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -749,10 +755,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RottenTomatoes/RottenTomatoes-Prefix.pch";
 				INFOPLIST_FILE = "RottenTomatoes/RottenTomatoes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

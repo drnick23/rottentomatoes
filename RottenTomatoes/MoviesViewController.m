@@ -11,9 +11,10 @@
 #import "MoviesCell.h"
 #import "MovieList.h"
 #import "UIImageView+AFNetworking.h"
+#import "MBProgressHUD.h"
 
 
-@interface MoviesViewController ()
+@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) MovieList *movieList;
@@ -21,6 +22,7 @@
 @end
 
 @implementation MoviesViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,8 +46,18 @@
     UINib *customNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"MoviesCell"];
     
+    // Initialize Refresh Control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    
+    // Configure Refresh Control
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
+    // Configure View Controller
+    //self.refreshControl = refreshControl;
+    
     // load data from RottenTomatoes
     //http://api.rottentomatoes.com/api/public/v1.0/lists/movies.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t
+    
     
     self.movieList = [[MovieList alloc] init];
     [self fetchMovies];
@@ -53,8 +65,19 @@
     
 }
 
+- (void) refresh:(id)sender
+{
+    NSLog(@"Refreshing");
+    
+    // end refreshing
+    [(UIRefreshControl *)sender endRefreshing];
+}
+
 - (void) fetchMovies
 {
+    
+    // show progress indicator when fetching movies
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     //NSURL *rottenTomatoesMoviesListURL = [[NSURL alloc] initWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t"];
     NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
@@ -84,6 +107,7 @@
                 
             }
             
+            // hi
             
             [self.tableView reloadData];
         }
@@ -91,6 +115,10 @@
         {
             NSLog(@"Error: not a dict");
         }
+
+        // hide progress indicator.
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         //NSLog(@"%@", object);
     }];
     
