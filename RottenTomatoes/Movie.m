@@ -26,7 +26,7 @@
         //NSLog(@"Cast %@ %d members",cast,cast.count);
         
         for (NSDictionary* castItem in cast) {
-            NSLog(@"Cast item %@",castItem[@"name"]);
+            //NSLog(@"Cast item %@",castItem[@"name"]);
             [castString appendFormat:@"%@,",castItem[@"name"]];
         }
         

@@ -69,6 +69,12 @@
 		0134893D18D5E8A500755D1A /* Pods-MBProgressHUD-Private.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0134893518D5E8A500755D1A /* Pods-MBProgressHUD-Private.xcconfig */; };
 		0134893E18D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m in Resources */ = {isa = PBXBuildFile; fileRef = 0134893618D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m */; };
 		0134893F18D5E8A500755D1A /* Pods-MBProgressHUD-prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 0134893718D5E8A500755D1A /* Pods-MBProgressHUD-prefix.pch */; };
+		0134894818D5FE6700755D1A /* Reachability.h in Resources */ = {isa = PBXBuildFile; fileRef = 0134894018D5FE6700755D1A /* Reachability.h */; };
+		0134894918D5FE6700755D1A /* Reachability.m in Resources */ = {isa = PBXBuildFile; fileRef = 0134894118D5FE6700755D1A /* Reachability.m */; };
+		0134894A18D5FE6700755D1A /* Pods-Reachability.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0134894218D5FE6700755D1A /* Pods-Reachability.xcconfig */; };
+		0134894B18D5FE6700755D1A /* Pods-Reachability-Private.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0134894318D5FE6700755D1A /* Pods-Reachability-Private.xcconfig */; };
+		0134894C18D5FE6700755D1A /* Pods-Reachability-dummy.m in Resources */ = {isa = PBXBuildFile; fileRef = 0134894418D5FE6700755D1A /* Pods-Reachability-dummy.m */; };
+		0134894D18D5FE6700755D1A /* Pods-Reachability-prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 0134894518D5FE6700755D1A /* Pods-Reachability-prefix.pch */; };
 		01624DDB18D4E7BC000953D0 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01624DD918D4E7BC000953D0 /* MovieDetailViewController.m */; };
 		01624DDC18D4E7BC000953D0 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01624DDA18D4E7BC000953D0 /* MovieDetailViewController.xib */; };
 		01624DDF18D4EE82000953D0 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 01624DDE18D4EE82000953D0 /* Movie.m */; };
@@ -155,6 +161,12 @@
 		0134893518D5E8A500755D1A /* Pods-MBProgressHUD-Private.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-MBProgressHUD-Private.xcconfig"; sourceTree = "<group>"; };
 		0134893618D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		0134893718D5E8A500755D1A /* Pods-MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		0134894018D5FE6700755D1A /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = Reachability.h; sourceTree = "<group>"; };
+		0134894118D5FE6700755D1A /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = Reachability.m; sourceTree = "<group>"; };
+		0134894218D5FE6700755D1A /* Pods-Reachability.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-Reachability.xcconfig"; sourceTree = "<group>"; };
+		0134894318D5FE6700755D1A /* Pods-Reachability-Private.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-Reachability-Private.xcconfig"; sourceTree = "<group>"; };
+		0134894418D5FE6700755D1A /* Pods-Reachability-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-Reachability-dummy.m"; sourceTree = "<group>"; };
+		0134894518D5FE6700755D1A /* Pods-Reachability-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pods-Reachability-prefix.pch"; sourceTree = "<group>"; };
 		01624DD818D4E7BC000953D0 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
 		01624DD918D4E7BC000953D0 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		01624DDA18D4E7BC000953D0 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
@@ -214,6 +226,7 @@
 		0134886D18D2AA4C00755D1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0134894718D5FE6700755D1A /* Reachability */,
 				0134893918D5E8A500755D1A /* MBProgressHUD */,
 				013488D618D2BDCA00755D1A /* AFNetworking */,
 				0134886E18D2AA4C00755D1A /* Foundation.framework */,
@@ -430,6 +443,29 @@
 			path = Pods/MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		0134894618D5FE6700755D1A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0134894218D5FE6700755D1A /* Pods-Reachability.xcconfig */,
+				0134894318D5FE6700755D1A /* Pods-Reachability-Private.xcconfig */,
+				0134894418D5FE6700755D1A /* Pods-Reachability-dummy.m */,
+				0134894518D5FE6700755D1A /* Pods-Reachability-prefix.pch */,
+			);
+			name = "Support Files";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		0134894718D5FE6700755D1A /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				0134894018D5FE6700755D1A /* Reachability.h */,
+				0134894118D5FE6700755D1A /* Reachability.m */,
+				0134894618D5FE6700755D1A /* Support Files */,
+			);
+			name = Reachability;
+			path = Pods/Reachability;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -511,6 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01624DDC18D4E7BC000953D0 /* MovieDetailViewController.xib in Resources */,
+				0134894818D5FE6700755D1A /* Reachability.h in Resources */,
 				013488E118D2BDCA00755D1A /* AFURLSessionManager.m in Resources */,
 				013488F418D2BDCA00755D1A /* UIButton+AFNetworking.h in Resources */,
 				013488E218D2BDCA00755D1A /* AFNetworkReachabilityManager.h in Resources */,
@@ -538,6 +575,7 @@
 				013488F518D2BDCA00755D1A /* UIButton+AFNetworking.m in Resources */,
 				013488F318D2BDCA00755D1A /* UIAlertView+AFNetworking.m in Resources */,
 				013488F618D2BDCA00755D1A /* UIImageView+AFNetworking.h in Resources */,
+				0134894D18D5FE6700755D1A /* Pods-Reachability-prefix.pch in Resources */,
 				013488E518D2BDCA00755D1A /* AFSecurityPolicy.m in Resources */,
 				013488A618D2B00700755D1A /* MoviesCell.xib in Resources */,
 				013488E418D2BDCA00755D1A /* AFSecurityPolicy.h in Resources */,
@@ -550,6 +588,8 @@
 				013488E318D2BDCA00755D1A /* AFNetworkReachabilityManager.m in Resources */,
 				013488D818D2BDCA00755D1A /* AFHTTPRequestOperation.h in Resources */,
 				013488E818D2BDCA00755D1A /* AFURLResponseSerialization.h in Resources */,
+				0134894C18D5FE6700755D1A /* Pods-Reachability-dummy.m in Resources */,
+				0134894B18D5FE6700755D1A /* Pods-Reachability-Private.xcconfig in Resources */,
 				0134893E18D5E8A500755D1A /* Pods-MBProgressHUD-dummy.m in Resources */,
 				013488D918D2BDCA00755D1A /* AFHTTPRequestOperation.m in Resources */,
 				013488DB18D2BDCA00755D1A /* AFHTTPRequestOperationManager.m in Resources */,
@@ -558,7 +598,9 @@
 				013488F218D2BDCA00755D1A /* UIAlertView+AFNetworking.h in Resources */,
 				013488DC18D2BDCA00755D1A /* AFURLConnectionOperation.h in Resources */,
 				013488DF18D2BDCA00755D1A /* AFHTTPSessionManager.m in Resources */,
+				0134894918D5FE6700755D1A /* Reachability.m in Resources */,
 				013488EB18D2BDCA00755D1A /* Pods-AFNetworking-Private.xcconfig in Resources */,
+				0134894A18D5FE6700755D1A /* Pods-Reachability.xcconfig in Resources */,
 				013488FD18D2BDCA00755D1A /* UIWebView+AFNetworking.h in Resources */,
 				013488E918D2BDCA00755D1A /* AFURLResponseSerialization.m in Resources */,
 			);

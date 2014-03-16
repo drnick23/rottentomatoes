@@ -39,6 +39,8 @@
     NSURL *imageUrl = [NSURL URLWithString:self.movie.fullImageUrl];
     UIImage *placeholderImage = [UIImage imageNamed:@"MoviePlaceholder"];
     [self.mainImage setImageWithURL:imageUrl placeholderImage:placeholderImage];
+    
+    self.navigationItem.title = self.movie.title;
 
 }
 
