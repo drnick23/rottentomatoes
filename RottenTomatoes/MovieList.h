@@ -13,6 +13,8 @@
 
 - (void)add:(Movie *)movie atTop:(BOOL)atTop;
 - (Movie *)get:(NSUInteger)index;
+- (MovieList *) filterContentForSearchText:(NSString*)searchText;
+
 - (int) count;
 
 @end

@@ -18,8 +18,10 @@
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) MovieList *movieList;
+@property (nonatomic,strong) MovieList *filteredMovieList;
 @property BOOL isReachable;
 @property (weak, nonatomic) IBOutlet UIView *networkErrorView;
 
@@ -43,6 +45,28 @@
     self.apiURL = apiURL;
 }
 
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    //NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    //searchResults = [recipes filteredArrayUsingPredicate:resultPredicate];
+    NSLog(@"filter content for search text called %@",searchText);
+    self.filteredMovieList = nil;
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    NSLog(@"searchDisplayController reload search");
+    
+    self.filteredMovieList = [self.movieList filterContentForSearchText:searchString];
+    
+    /*[self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    */
+    return YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -55,6 +79,7 @@
     // setup the custom cell
     UINib *customNib = [UINib nibWithNibName:@"MoviesCell" bundle:nil];
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"MoviesCell"];
+    //[self.searchDisplayController]
     
     //self.apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
     
@@ -176,14 +201,29 @@
 }
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filteredMovieList count];
+    }
     return [self.movieList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MoviesCell";
-    MoviesCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    Movie *movie = [self.movieList get:indexPath.row];
+    
+    MovieList *movieList;
+    
+    NSLog(@"tableView cellforrow");
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        NSLog(@"Search results view");
+        movieList = self.filteredMovieList;
+    }
+    else {
+        movieList = self.movieList;
+    }
+
+    MoviesCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    Movie *movie = [movieList get:indexPath.row];
     
     cell.titleLabel.text = movie.title;//[NSString stringWithFormat:@"%@", self.movies[indexPath.row][@"title"]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -195,20 +235,28 @@
     NSURL *imageUrl = [NSURL URLWithString:movie.thumbUrl];
     UIImage *placeholderImage = [UIImage imageNamed:@"MoviePlaceholder"];
     [cell.thumbImageView setImageWithURL:imageUrl placeholderImage:placeholderImage];
-
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MovieList *movieList;
+    
+    NSLog(@"selected cell %ld",(long)indexPath.row);
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        movieList = self.filteredMovieList;
+    }
+    else {
+        movieList = self.movieList;
+    }
     
     // Display Alert Message
-    MoviesCell *cell = (MoviesCell *) [tableView cellForRowAtIndexPath:indexPath];
+    MoviesCell *cell = (MoviesCell *) [self.tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"You selected %@",cell.titleLabel.text);
     
     MovieDetailViewController *mdvc = [[MovieDetailViewController alloc] init];
-    mdvc.movie = [self.movieList get:indexPath.row];
+    mdvc.movie = [movieList get:indexPath.row];
     [self.navigationController pushViewController:mdvc animated:YES];
     
 }
