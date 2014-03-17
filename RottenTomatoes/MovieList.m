@@ -42,13 +42,10 @@
     NSString *regEx = [NSString stringWithFormat:@".*%@.*", [searchText lowercaseString]];
     
     for (Movie *movie in self.movies) {
-        // your code here
-        // [holiday foo]
         NSRange range = [[movie.title lowercaseString] rangeOfString:regEx options:NSRegularExpressionSearch];
         if (range.location != NSNotFound) {
             [filtered add:movie atTop:NO];
         }
-        
     }
     
     return filtered;

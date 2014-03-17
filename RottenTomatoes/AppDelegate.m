@@ -28,10 +28,15 @@
     dvc.navigationItem.title = @"Current DVDs";
     
     UINavigationController *firstnc = [[UINavigationController alloc] initWithRootViewController:mvc];
-    firstnc.tabBarItem.title = @"Movies";
+    //firstnc.tabBarItem.title = @"Movies";
+    firstnc.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:3];
+    
+    //firstnc.tabBarItem.image =
+    //firstnc.tabBarItem.image = [UIImage imageNamed:@"MoviePlaceholder.png"];
     
     UINavigationController *secondnc = [[UINavigationController alloc] initWithRootViewController:bvc];
     secondnc.tabBarItem.title = @"Box Office";
+    
     
     UINavigationController *thirdnc = [[UINavigationController alloc] initWithRootViewController:dvc];
     thirdnc.tabBarItem.title = @"DVDs";

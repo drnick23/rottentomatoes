@@ -16,7 +16,8 @@
     if (self) {
         self.title = dictionary[@"title"];
         self.thumbUrl = dictionary[@"posters"][@"thumbnail"];
-        self.fullImageUrl = dictionary[@"posters"][@"profile"];
+        NSLog(@"%@",dictionary);
+        self.fullImageUrl = dictionary[@"posters"][@"original"];
         self.summary = dictionary[@"synopsis"];
         
         // process the cast into a single string
@@ -27,11 +28,11 @@
         
         for (NSDictionary* castItem in cast) {
             //NSLog(@"Cast item %@",castItem[@"name"]);
-            [castString appendFormat:@"%@,",castItem[@"name"]];
+            [castString appendFormat:@"%@, ",castItem[@"name"]];
         }
         
-        // truncate last comma from castString and set into cast property
-        self.cast = [castString substringToIndex:[castString length]-1];
+        // truncate last comma and space from castString and set into cast property
+        self.cast = [castString substringToIndex:[castString length]-2];
     }
     return self;
 }
