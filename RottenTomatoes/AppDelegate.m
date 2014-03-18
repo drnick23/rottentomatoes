@@ -22,7 +22,7 @@
     MoviesViewController *bvc = [[MoviesViewController alloc] init];
     bvc.apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
     bvc.navigationItem.title = @"Box Office";
-    
+   
     MoviesViewController *dvc = [[MoviesViewController alloc] init];
     dvc.apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/current_releases.json?apikey=dnr7gjmesk2tm5vmvvvzrf6t";
     dvc.navigationItem.title = @"Current DVDs";
@@ -37,24 +37,22 @@
     UINavigationController *secondnc = [[UINavigationController alloc] initWithRootViewController:bvc];
     secondnc.tabBarItem.title = @"Box Office";
     
-    
     UINavigationController *thirdnc = [[UINavigationController alloc] initWithRootViewController:dvc];
     thirdnc.tabBarItem.title = @"DVDs";
     
     UITabBarController *tbc = [[UITabBarController alloc] init];
     tbc.viewControllers = @[firstnc,secondnc,thirdnc];
     
-    
-    
     self.window.rootViewController = tbc;
     
     
-    
-    
-    // placeholder code for customizing navigation bar
+    // code for customizing navigation bars
     UINavigationBar *nb = firstnc.navigationBar;
     UIImage *image = [UIImage imageNamed:@"MoviePlaceholder.png"];
     [nb setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    
+    [secondnc.navigationBar setBackgroundColor:[UIColor redColor]];
+    [thirdnc.navigationBar setBackgroundColor:[UIColor greenColor]];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
